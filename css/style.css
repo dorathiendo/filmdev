@@ -28,7 +28,7 @@ body {
 }
 
 h1, h2 {
-    background-color: #121212;
+    background-color: rgba(18, 18, 18, 0.7);
     padding: 10px;
 }
 
