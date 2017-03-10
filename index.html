@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Film Dev Timer</title>
+    <link rel="icon" type="image/png" href="clock.png">
+    <script src='jquery-2.2.3.min.js'></script>
+    <script src="timer.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css"/>
+    <script src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="bootstrap-3.3.7/js/moment.min.js"></script>
+</head>
+<body>
+    <div class="steps-wrapper">
+        <div class="step">
+            <h1>Film Dev Timer</h1>
+            <button class="next btn btn-primary">Start</button>
+        </div>
+        <div class="step" timetype="soak" duration="60">
+            <h1>Step 1: Presoak</h1>
+            <h2>Pour tap water (102F)</h2>
+
+            <h3 class="instruct">Ready</h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:0"></div>
+            </div>
+            <span class="timer">00:00/00:00</span>
+            <button class="start btn btn-success">Start</button>
+            <button class="next btn btn-primary">Next</button>
+        </div>
+        <div class="step" timetype="dev" duration="210">
+            <h1>Step 2: Develop</h1>
+            <h2>Pour Developer (102F)</h2>
+            <div id="push-wrapper">
+                <select name="stops" id="stops">
+                    <option value="0">Regular</option>
+                    <option value="1">Push 1 Stop</option>
+                    <option value="2">Push 2 Stops</option>
+                </select>
+            </div>
+            <h3 class="instruct">Ready</h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:0"></div>
+            </div>
+            <span class="timer">00:00/00:00</span>
+            <button class="start btn btn-success">Start</button>
+            <button class="next btn btn-primary">Next</button>
+        </div>
+        <div class="step" timetype="dev" duration="390">
+            <h1>Step 3: Blix</h1>
+            <h2>Pour Blix (102F)</h2>
+
+            <h3 class="instruct">Ready</h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:0"></div>
+            </div>
+            <span class="timer">00:00/00:00</span>
+            <button class="start btn btn-success">Start</button>
+            <button class="next btn btn-primary">Next</button>
+        </div>
+        <div class="step" timetype="soak" duration="180">
+            <h1>Step 4: Wash</h1>
+            <h2>Pour tap water (95F - 105F)</h2>
+
+            <h3 class="instruct">Ready</h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:0"></div>
+            </div>
+            <span class="timer">00:00/00:00</span>
+            <button class="start btn btn-success">Start</button>
+            <button class="next btn btn-primary">Next</button>
+        </div>
+        <div class="step" timetype="dev" duration="90">
+            <h1>Step 5: Stabilizer</h1>
+            <h2>Pour Stabilizer (Room temp)</h2>
+            <h3 class="instruct">Ready</h3>
+            <div class="progress">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" style="width:0"></div>
+            </div>
+            <span class="timer">00:00/00:00</span>
+            <button class="start btn btn-success">Start</button>
+            <button class="next btn btn-primary">Next</button>
+        </div>
+        <div class="step">
+            <h1>Step 6: Rinse</h1>
+            <h2>Quick rise with tap water (Room temp)</h2>
+        </div>
+    </div>
+    <audio id="beep">
+        <source src="sounds/beep.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="agitate_sound">
+        <source src="sounds/agitate.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="invert_sound">
+        <source src="sounds/invert.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="wait_sound">
+        <source src="sounds/wait.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="pour_sound">
+        <source src="sounds/pour.mp3" type="audio/mpeg">
+    </audio>
+</body>
+</html>
