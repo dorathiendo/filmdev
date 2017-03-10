@@ -31,6 +31,12 @@ body {
     padding: 0 25%;
 }
 
+@media only screen and (max-width: 600px) {
+    .steps-wrapper {
+        padding: 0 5%;
+    }
+}
+
 .steps-wrapper .step {
     display: table-cell;
     vertical-align: middle;
