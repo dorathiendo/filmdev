@@ -2,19 +2,22 @@ $(document).ready(function(){
     preloadImages(["images/img043.jpg"]);
 
     $('button.next').click(function(){
-        $(this).parents('.step').hide();
-        $(this).parents('.step').next().css('display', 'table-cell');
+        var that = $(this);
+        $('.steps-wrapper').animate({
+            scrollTop: that.parents('.step-wrapper').next()[0].offsetTop
+        });
     });
 
     $('.step button.start').click(function(){
         var step = $(this).parents('.step');
-       var type = step.attr('timetype');
+        var type = step.attr('timetype');
         var duration = step.attr('duration');
         if(type == 'soak'){
             startSoakTimer(duration, step);
         } else {
             startDevTimer(duration, step);
         }
+        $(this).attr('disabled', true);
     });
 
     $('#push-wrapper select').change(function(e){
