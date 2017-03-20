@@ -98,6 +98,15 @@ button:active {
     animation: blinker 500ms linear infinite;
 }
 
+.blink_me_limited {
+    animation-name: blinker;
+    animation-duration: 500ms;
+    animation-timing-function: linear;
+    /*animation-delay: 0s;*/
+    animation-iteration-count: 4;
+    /*animation-direction: alternate;*/
+}
+
 @keyframes blinker {
     50% { opacity: 0; }
 }
