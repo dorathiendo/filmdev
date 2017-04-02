@@ -15,12 +15,18 @@ $(document).ready(function(){
         var step = $(this).parents('.step');
         var type = step.attr('timetype');
         var duration = step.attr('duration');
-        if(type == 'soak'){
-            startSoakTimer(duration, step);
-        } if(type == 'agitate') {
-            startAgitateSoakTimer(duration, step);
-        } else {
-            startDevTimer(duration, step);
+        switch(type){
+            case 'soak':
+                startSoakTimer(duration, step);
+                break;
+            case 'agitate':
+                startAgitateSoakTimer(duration, step);
+                break;
+            case 'dev':
+                startDevTimer(duration, step);
+                break;
+            default:
+                return;
         }
         $(this).attr('disabled', true);
     });
@@ -85,23 +91,23 @@ function startDevTimer(duration, stepEl) {
         stepEl.find('.timer').html(convertSecsToTime(timer) + '/' + convertSecsToTime(max));
 
         if(timer == 15){
-            //$("#wait_sound")[0].play();
+            $("#wait_sound")[0].play();
             stepEl.find('.instruct').html('<span class="blink_me">Wait</span>');
         }
 
         if((thirtySecCount == 30) && (timer < (max-15))){
-            //$("#invert_sound")[0].play();
+            $("#invert_sound")[0].play();
             stepEl.find('.instruct').html('<span class="blink_me_limited">Invert 4x</span>');
             thirtySecCount = 0;
         }
 
         if(timer == (max-15)){
-            //$("#pour_sound")[0].play();
+            $("#pour_sound")[0].play();
             stepEl.find('.instruct').html('<span class="blink_me">Pour Out</span>');
         }
 
         if (timer >= max) {
-            //$("#beep")[0].play();
+            $("#beep")[0].play();
             clearInterval(t);
         }
 
