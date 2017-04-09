@@ -53,6 +53,10 @@ $(document).ready(function(){
             scrollTop: 0
         });
     })
+
+    $('#beep_btn').click(function(){
+        $('#beep')[0].play();
+    });
 });
 
 var oneStopUp = 1.25, twoStopsUp = 1.5, devTime = 210;
@@ -179,26 +183,29 @@ function preloadImages(array) {
 }
 
 function playAudio(type){
-    switch(type){
-        case 'beep':
-            $('body').append('<audio class="audio" autoplay><source src="sounds/beep.mp3" type="audio/mpeg"></audio>');
-            break;
-        case 'agitate':
-            $('body').append('<audio class="audio" autoplay><source src="sounds/agitate.mp3" type="audio/mpeg"></audio>');
-            break;
-        case 'invert':
-            $('body').append('<audio class="audio" autoplay><source src="sounds/invert.mp3" type="audio/mpeg"></audio>');
-            break;
-        case 'wait':
-            $('body').append('<audio class="audio" autoplay><source src="sounds/wait.mp3" type="audio/mpeg"></audio>');
-            break;
-        case 'pour':
-            $('body').append('<audio class="audio" autoplay><source src="sounds/pour.mp3" type="audio/mpeg"></audio>');
-            break;
-    }
+    //switch(type){
+    //    case 'beep':
+    //        $('body').append('<audio class="audio" autoplay><source src="sounds/beep.mp3" type="audio/mpeg"></audio>');
+    //        break;
+    //    case 'agitate':
+    //        $('body').append('<audio class="audio" autoplay><source src="sounds/agitate.mp3" type="audio/mpeg"></audio>');
+    //        break;
+    //    case 'invert':
+    //        $('body').append('<audio class="audio" autoplay><source src="sounds/invert.mp3" type="audio/mpeg"></audio>');
+    //        break;
+    //    case 'wait':
+    //        $('body').append('<audio class="audio" autoplay><source src="sounds/wait.mp3" type="audio/mpeg"></audio>');
+    //        break;
+    //    case 'pour':
+    //        $('body').append('<audio class="audio" autoplay><source src="sounds/pour.mp3" type="audio/mpeg"></audio>');
+    //        break;
+    //}
+    $('#beep_btn').trigger('click');
 }
 
+
+
 function cleanUpAudio(){
-    $('.audio').remove();
+    //$('.audio').remove();
 }
 
