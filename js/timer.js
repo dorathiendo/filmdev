@@ -55,7 +55,19 @@ $(document).ready(function(){
     })
 
     $('#beep_btn').click(function(){
-        $('#beep')[0].play();
+        $('#beep_sound')[0].play();
+    });
+    $('#agitate_btn').click(function(){
+        $('#agitate_sound')[0].play();
+    });
+    $('#invert_btn').click(function(){
+        $('#invert_sound')[0].play();
+    });
+    $('#wait_btn').click(function(){
+        $('#wait_sound')[0].play();
+    });
+    $('#pour_btn').click(function(){
+        $('#pour_sound')[0].play();
     });
 });
 
@@ -185,22 +197,27 @@ function preloadImages(array) {
 function playAudio(type){
     //switch(type){
     //    case 'beep':
-    //        $('body').append('<audio class="audio" autoplay><source src="sounds/beep.mp3" type="audio/mpeg"></audio>');
+    //        //$('body').append('<audio class="audio" autoplay><source src="sounds/beep.mp3" type="audio/mpeg"></audio>');
+    //        $('#beep_btn').trigger('click');
     //        break;
     //    case 'agitate':
-    //        $('body').append('<audio class="audio" autoplay><source src="sounds/agitate.mp3" type="audio/mpeg"></audio>');
+    //        //$('body').append('<audio class="audio" autoplay><source src="sounds/agitate.mp3" type="audio/mpeg"></audio>');
+    //        $('#agitate_btn').trigger('click');
     //        break;
     //    case 'invert':
-    //        $('body').append('<audio class="audio" autoplay><source src="sounds/invert.mp3" type="audio/mpeg"></audio>');
+    //        //$('body').append('<audio class="audio" autoplay><source src="sounds/invert.mp3" type="audio/mpeg"></audio>');
+    //        $('#invert_btn').trigger('click');
     //        break;
     //    case 'wait':
-    //        $('body').append('<audio class="audio" autoplay><source src="sounds/wait.mp3" type="audio/mpeg"></audio>');
+    //        //$('body').append('<audio class="audio" autoplay><source src="sounds/wait.mp3" type="audio/mpeg"></audio>');
+    //        $('#beep_btn').trigger('click');
     //        break;
     //    case 'pour':
-    //        $('body').append('<audio class="audio" autoplay><source src="sounds/pour.mp3" type="audio/mpeg"></audio>');
+    //        //$('body').append('<audio class="audio" autoplay><source src="sounds/pour.mp3" type="audio/mpeg"></audio>');
+    //        $('#beep_btn').trigger('click');
     //        break;
     //}
-    $('#beep_btn').trigger('click');
+    $('#' + type + '_btn').trigger('click');
 }
 
 
