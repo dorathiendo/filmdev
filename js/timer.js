@@ -12,6 +12,7 @@ $(document).ready(function(){
     });
 
     $('.step button.start').click(function(){
+        cleanUpAudio();
         var step = $(this).parents('.step');
         var type = step.attr('timetype');
         var duration = step.attr('duration');
@@ -59,7 +60,8 @@ var oneStopUp = 1.25, twoStopsUp = 1.5, devTime = 210;
 function startSoakTimer(duration, stepEl){
     var timer = 0;
     var max = parseInt(stepEl.attr('duration'));
-    stepEl.find('.instruct').html('<span class="blink_me">Soak</span>');
+    stepEl.find('.instruct').html('<span class="blink_me">Wait</span>');
+    playAudio('wait');
     stepEl.find('.timer').css('visibility', 'visible');
     var t = setInterval(function () {
         timer++;
@@ -70,7 +72,7 @@ function startSoakTimer(duration, stepEl){
 
 
         if (timer >= max) {
-            $("#beep")[0].play();
+            playAudio('beep');
             clearInterval(t);
         }
     }, 1000);
@@ -81,8 +83,8 @@ function startDevTimer(duration, stepEl) {
     var max = parseInt(stepEl.attr('duration'));
     var thirtySecCount = 0;
     stepEl.find('.instruct').html('<span class="blink_me">Agitate</span>');
+    playAudio('agitate');
     stepEl.find('.timer').css('visibility', 'visible');
-    $('#agitate_sound')[0].play();
     var t = setInterval(function () {
         timer++;
         var percentage = (timer / max) * 100;
@@ -91,23 +93,23 @@ function startDevTimer(duration, stepEl) {
         stepEl.find('.timer').html(convertSecsToTime(timer) + '/' + convertSecsToTime(max));
 
         if(timer == 15){
-            $("#wait_sound")[0].play();
+            playAudio('wait');
             stepEl.find('.instruct').html('<span class="blink_me">Wait</span>');
         }
 
         if((thirtySecCount == 30) && (timer < (max-15))){
-            $("#invert_sound")[0].play();
+            playAudio('invert');
             stepEl.find('.instruct').html('<span class="blink_me_limited">Invert 4x</span>');
             thirtySecCount = 0;
         }
 
         if(timer == (max-15)){
-            $("#pour_sound")[0].play();
+            playAudio('pour');
             stepEl.find('.instruct').html('<span class="blink_me">Pour Out</span>');
         }
 
         if (timer >= max) {
-            $("#beep")[0].play();
+            playAudio('beep');
             clearInterval(t);
         }
 
@@ -122,8 +124,8 @@ function startAgitateSoakTimer(duratoin, stepEl){
     var max = parseInt(stepEl.attr('duration'));
     var thirtySecCount = 0;
     stepEl.find('.instruct').html('<span class="blink_me">Agitate</span>');
+    playAudio('agitate');
     stepEl.find('.timer').css('visibility', 'visible');
-    $('#agitate_sound')[0].play();
     var t = setInterval(function () {
         timer++;
         var percentage = (timer / max) * 100;
@@ -132,17 +134,17 @@ function startAgitateSoakTimer(duratoin, stepEl){
         stepEl.find('.timer').html(convertSecsToTime(timer) + '/' + convertSecsToTime(max));
 
         if(timer == 15){
-            $("#wait_sound")[0].play();
+            playAudio('wait');
             stepEl.find('.instruct').html('<span class="blink_me">Wait</span>');
         }
 
         if(timer == (max-15)){
-            $("#pour_sound")[0].play();
+            playAudio('pour');
             stepEl.find('.instruct').html('<span class="blink_me">Pour Out</span>');
         }
 
         if (timer >= max) {
-            $("#beep")[0].play();
+            playAudio('beep');
             clearInterval(t);
         }
 
@@ -176,7 +178,27 @@ function preloadImages(array) {
     }
 }
 
-function beepSound(){
-    return $('body').append('<audio id="beep" autoplay><source src="sounds/beep.mp3" type="audio/mpeg"></audio>');
+function playAudio(type){
+    switch(type){
+        case 'beep':
+            $('body').append('<audio class="audio" autoplay><source src="sounds/beep.mp3" type="audio/mpeg"></audio>');
+            break;
+        case 'agitate':
+            $('body').append('<audio class="audio" autoplay><source src="sounds/agitate.mp3" type="audio/mpeg"></audio>');
+            break;
+        case 'invert':
+            $('body').append('<audio class="audio" autoplay><source src="sounds/invert.mp3" type="audio/mpeg"></audio>');
+            break;
+        case 'wait':
+            $('body').append('<audio class="audio" autoplay><source src="sounds/wait.mp3" type="audio/mpeg"></audio>');
+            break;
+        case 'pour':
+            $('body').append('<audio class="audio" autoplay><source src="sounds/pour.mp3" type="audio/mpeg"></audio>');
+            break;
+    }
+}
+
+function cleanUpAudio(){
+    $('.audio').remove();
 }
 
