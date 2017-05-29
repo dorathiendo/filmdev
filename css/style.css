@@ -9,17 +9,17 @@ body, html {
     color: white !important;
     letter-spacing: 0.5em;
 
-    background: linear-gradient(
-            rgba(0, 0, 0, 0.2),
-            rgba(0, 0, 0, 0.45)
-    ), url(../images/img043.jpg);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    /*background: linear-gradient(*/
+            /*rgba(0, 0, 0, 0.2),*/
+            /*rgba(0, 0, 0, 0.45)*/
+    /*), url(../images/img043.jpg);*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
+    /*background-attachment: fixed;*/
 
     padding: 0;
     margin: 0;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 body {
@@ -69,7 +69,7 @@ button:active {
 .steps-wrapper {
     height: 100vh;
     width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /*@media only screen and (max-width: 600px) {*/
@@ -82,6 +82,8 @@ button:active {
     height: 100%;
     width:100%;
     display: table;
+    background-size: cover;
+    background-position: center;
 }
 
 .steps-wrapper .step-wrapper .step {

@@ -1,13 +1,37 @@
+var images = ['images/background/img043.jpg',
+    'images/background/img058.jpg',
+    'images/background/img061.jpg',
+    'images/background/img149.jpg',
+    'images/background/img200.jpg',
+    'images/background/img214.jpg',
+    'images/background/img204.jpg'];
+
 $(document).ready(function(){
-    preloadImages(["images/img043.jpg"]);
+    preloadImages(images);
 
     var noSleep = new NoSleep();
     noSleep.enable();
+
+    $('.step-wrapper').each(function(key, value){
+        $(this).css({
+            "background": 'linear-gradient(rgba(0, 0, 0, 0.2),rgba(0, 0, 0, 0.45)), url("' + images[key] + '")',
+            'background-size': 'cover',
+            'background-position': 'center',
+            'background-attachment': 'fixed'
+        });
+    });
 
     $('button.next').click(function(){
         var that = $(this);
         $('.steps-wrapper').animate({
             scrollTop: that.parents('.step-wrapper').next()[0].offsetTop
+        });
+    });
+
+    $('button.back').click(function(){
+        var that = $(this);
+        $('.steps-wrapper').animate({
+            scrollTop: that.parents('.step-wrapper').prev()[0].offsetTop
         });
     });
 
